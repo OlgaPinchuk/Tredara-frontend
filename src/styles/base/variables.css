@@ -1,0 +1,16 @@
+:root {
+  /* Colors */
+  --color-white: #fff;
+  --color-gray-700: #383838;
+  --color-gray-800: #292929;
+  --color-dark: #121212;
+  --color-link: var(--color-dark);
+
+  /* Spacing */
+  --space-small: 0.8rem;
+  --space-medium: 1.6rem;
+  --space-big: 3.2rem;
+
+  /* Border radious */
+  --border-radius: 0.4rem;
+}
