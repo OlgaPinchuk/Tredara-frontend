@@ -4,6 +4,10 @@
   background-color: var(--color-branded);
 }
 
+.navigation-bar .flex-between {
+  flex-wrap: wrap;
+}
+
 .navigation-bar .logo {
   font-weight: 600;
   font-size: 2.6rem;
