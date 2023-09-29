@@ -1,3 +1,9 @@
 export function ProductsPage() {
-  return <h2>Products page</h2>;
+  return (
+    <article className="page products-page">
+      <div className="container">
+        <h2>Products page</h2>
+      </div>
+    </article>
+  );
 }

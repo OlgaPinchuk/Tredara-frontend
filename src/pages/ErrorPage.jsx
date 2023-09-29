@@ -1,3 +1,9 @@
 export function ErrorPage() {
-  return <h2>Page Not Found</h2>;
+  return (
+    <article className="page error-page">
+      <div className="container">
+        <h2>Error Page</h2>
+      </div>
+    </article>
+  );
 }

@@ -11,6 +11,7 @@
 @import url("./components/navigation-bar.css");
 
 /* Pages */
-@import url("./pages/auth.css");
+@import url("./pages/auth-page.css");
 @import url("./pages/products.css");
 @import url("./pages/product-details.css");
+@import url("./pages/error-page.css");

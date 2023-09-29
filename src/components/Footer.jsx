@@ -1,3 +1,11 @@
-export default function Footer() {
-  return <h2>Footer</h2>;
+export function Footer() {
+  return (
+    <footer className="main-footer">
+      <div className="container">
+        <div className="copyright">
+          <p> © {new Date().getFullYear()} Tradera</p>
+        </div>
+      </div>
+    </footer>
+  );
 }

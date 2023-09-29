@@ -1,9 +1,15 @@
 :root {
   /* Colors */
   --color-white: #fff;
+
+  --color-branded: #fef781;
+
+  --color-gray-300: #e6e6e6;
   --color-gray-700: #383838;
+
   --color-gray-800: #292929;
   --color-dark: #121212;
+
   --color-link: var(--color-dark);
 
   /* Spacing */

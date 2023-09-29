@@ -1,10 +1,13 @@
 import { Outlet } from "react-router-dom";
 
+import { NavigationBar, Footer } from "./components";
+
 export default function App() {
   return (
-    <>
-      <h1>Tredara</h1>
+    <section className="App">
+      <NavigationBar />
       <Outlet />
-    </>
+      <Footer />
+    </section>
   );
 }
