@@ -1,0 +1,31 @@
+.input {
+  display: block;
+}
+
+.input span {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.input-field input {
+  padding: 0.5rem 1rem;
+  min-width: 32rem;
+  height: 4.4rem;
+  background-color: var(--color-gray-300);
+  background-color: #f0f1f5;
+  color: var(--color-gray-700);
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.input-field input::placeholder {
+  color: inherit;
+  opacity: 0.5;
+}
+
+.input-field input:focus {
+  outline: none;
+  border: 2px solid var(--color-branded-active);
+}
