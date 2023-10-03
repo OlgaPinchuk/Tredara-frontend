@@ -1,0 +1,82 @@
+.create-item-container {
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-gray-semi-tranparent);
+}
+
+.create-item-box {
+  width: 320px;
+  height: 60vh;
+  border: 1px grey solid;
+  border-radius: 4px;
+  padding: var(--space-medium);
+  background-color: var(--color-white);
+  color: var(--color-dark);
+  overflow-y: scroll;
+}
+
+.input-title {
+  display: block;
+  font-weight: 500;
+  font-size: medium;
+  margin-bottom: 0;
+}
+
+.input-box {
+  padding: var(--space-padding-small);
+  width: 100%;
+  margin-bottom: var(--space-small);
+}
+
+.input-area {
+  padding: var(--space-padding-small);
+  min-height: 100px;
+  width: 100%;
+  margin-bottom: var(--space-small);
+}
+
+.select-time-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-small);
+}
+
+.select-time-button {
+  padding: var(--space-padding-small);
+}
+
+/* .input-image {
+  display: none;
+}
+
+.image {
+  width: 150px;
+  aspect-ratio: 16/9;
+  cursor: pointer;
+} */
+
+.input-image {
+  width: 150px;
+}
+
+.input-image img {
+  cursor: pointer;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.input-image input[type="file"] {
+  display: none;
+}
+
+.bottom-button {
+  width: 100%;
+  background-color: var(--color-dark);
+  color: var(--color-white);
+  font-size: medium;
+  border-radius: var(--border-radius);
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: var(--space-small);
+  margin-top: var(--space-medium);
+}

@@ -12,7 +12,10 @@
 
   --color-link: var(--color-dark);
 
+  --color-gray-semi-tranparent: #16121212;
+
   /* Spacing */
+  --space-padding-small: 0.4rem;
   --space-small: 0.8rem;
   --space-medium: 1.6rem;
   --space-big: 3.2rem;
