@@ -1,36 +1,18 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import {
-  ProductDetailsPage,
-  ProductsPage,
-  SignInPage,
-  SignUpPage,
-  ErrorPage,
-} from "../pages";
+import { ErrorPage } from "../pages";
+import UnloggedRoutes from "./UnloggedRoutes";
+import CustomerRoutes from "./CustomerRoutes";
 import App from "../App";
+
+/* TODO: Check whether the user is authenticated */
+const isAuthenticated = false;
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    children: [
-      {
-        index: true,
-        element: <ProductsPage />,
-      },
-      {
-        path: ":productId",
-        element: <ProductDetailsPage />,
-      },
-      {
-        path: "/login",
-        element: <SignInPage />,
-      },
-      {
-        path: "/register",
-        element: <SignUpPage />,
-      },
-    ],
+    children: isAuthenticated ? CustomerRoutes : UnloggedRoutes,
   },
   {
     path: "*",

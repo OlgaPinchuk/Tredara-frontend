@@ -6,7 +6,9 @@ export function NavigationBar() {
   return (
     <header className="navigation-bar">
       <div className="container flex-between">
-        <h1 className="logo">Tredara</h1>
+        <Link to="/">
+          <h1 className="logo">Tredara</h1>
+        </Link>
         {user ? (
           <button className="button-logout">Logout</button>
         ) : (

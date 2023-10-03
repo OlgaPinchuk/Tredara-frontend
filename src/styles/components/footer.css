@@ -1,6 +1,7 @@
 .main-footer {
   padding: var(--space-medium) 0;
-  background-color: var(--color-branded);
+  background-color: var(--color-dark-green);
+  color: var(--color-branded);
 }
 
 .main-footer .copyright {
