@@ -9,6 +9,7 @@
 /* Components */
 @import url("./components/footer.css");
 @import url("./components/navigation-bar.css");
+@import url("./components/create-item-container.css");
 @import url("./components/input-field.css");
 
 /* Pages */
