@@ -59,11 +59,11 @@ export function CreateItem() {
     const data = {
       title: title,
       description: description,
-      start_price: startPrice,
-      start_date_time: new Date(),
-      end_date_time: selectedDate,
-      image_string: selectedImage,
-      user_id: user ? user.id : 1, //1 as default id, till the authentication is not integrated
+      startPrice: startPrice,
+      startDateTime: new Date(),
+      endDateTime: selectedDate,
+      imageString: selectedImage,
+      userID: user ? user.id : 1, //1 as default id, till the authentication is not integrated
     };
     proceedToUploadItem(data);
   };
