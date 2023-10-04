@@ -1,3 +1,46 @@
+.auth-page {
+  display: grid;
+  place-items: center;
+  color: var(--color-branded);
+  text-shadow: 1px 1px 2px var(--color-gray-700);
+}
+
+.auth-page .container {
+  margin: 2rem 0;
+}
+
+.sign-up-page {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../assets/images/sign-up.jpg") no-repeat;
+  background-size: cover;
+}
+
 .sign-in-page {
-  color: red;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../assets/images/sign-in.jpg") no-repeat;
+  background-size: cover;
+}
+
+.auth-page h2 {
+  margin-bottom: 2rem;
+  font-size: 2.3rem;
+  text-align: center;
+}
+
+.auth-form {
+  gap: 1.5rem;
+}
+
+.auth-form button {
+  margin: 2rem 0;
+  background-color: var(--color-dark-green);
+}
+
+.auth-page footer {
+  color: var(--color-white);
+}
+
+.auth-page footer a {
+  color: var(--color-branded);
+  text-decoration: underline;
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PlaceHolderImage from "../assets/placeholder.jpg";
 import DateTimeSelector from "./DateTimeSelector";
+import { useUser } from "../state/UserContext";
 
 export function CreateItem() {
   const [selectedImage, setSelectedImage] = useState();
@@ -8,6 +9,8 @@ export function CreateItem() {
   const [description, setDescription] = useState();
   const [startPrice, setStartPrice] = useState();
   const [selectedDate, setSelectedDate] = useState(null);
+
+  const { user } = useUser();
 
   // Methods
   async function onChange(event) {
@@ -38,19 +41,9 @@ export function CreateItem() {
     return result;
   }
 
-  const handleAddButtonClick = () => {
-    if (!title) {
-      alert("Please enter title!");
-      return;
-    }
-    if (!description) {
-      alert("Please enter description!");
-      return;
-    }
-    if (!startPrice) {
-      alert("Please enter starting price!");
-      return;
-    }
+  const handleAddButtonClick = (event) => {
+    event.preventDefault();
+
     if (!selectedDate) {
       alert("Please select end date!");
       return;
@@ -66,21 +59,22 @@ export function CreateItem() {
     const data = {
       title: title,
       description: description,
-      starting_price: startPrice,
-      end_time: selectedDate,
-      image: selectedImage,
+      start_price: startPrice,
+      start_date_time: new Date(),
+      end_date_time: selectedDate,
+      image_string: selectedImage,
+      user_id: user ? user.id : 1, //1 as default id, till the authentication is not integrated
     };
-    console.log("item is : " + JSON.stringify(data));
     proceedToUploadItem(data);
   };
 
   const proceedToUploadItem = async (data) => {
-    const url = `${process.env.REACT_APP_API_URL}item/`;
+    const url = `http://localhost:8080/api/v1/item/create`;
+
     fetch(url, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
-        Authorization: `Bearer ${user?.token}`,
         "Content-Type": "application/json",
       },
     })
@@ -90,10 +84,18 @@ export function CreateItem() {
       .catch((error) => onFailure(error));
   };
 
+  const onSuccess = (resp) => {
+    alert("Product Added..");
+  };
+
+  const onFailure = (error) => {
+    console.error(error);
+  };
+
   return (
     <div className="container">
       <div className="create-item-container">
-        <div className="create-item-box">
+        <form className="create-item-box" onSubmit={handleAddButtonClick}>
           <h2>Add Product</h2>
 
           <label className="input-title">Title</label>
@@ -103,6 +105,7 @@ export function CreateItem() {
             value={title}
             type="text"
             onChange={(e) => setTitle(e.target.value)}
+            required
           />
 
           <label className="input-title">Description</label>
@@ -110,7 +113,7 @@ export function CreateItem() {
             className="input-area"
             placeholder="product description.."
             value={description}
-            type="text"
+            required
             onChange={(e) => setDescription(e.target.value)}
           />
 
@@ -121,6 +124,7 @@ export function CreateItem() {
             placeholder="ex. 100"
             value={startPrice}
             onChange={(e) => setStartPrice(e.target.value)}
+            required
           />
 
           <div className="select-time-container">
@@ -144,10 +148,8 @@ export function CreateItem() {
             />
           </label>
 
-          <button className="bottom-button" onClick={handleAddButtonClick}>
-            Add
-          </button>
-        </div>
+          <button className="bottom-button">Add</button>
+        </form>
       </div>
     </div>
   );
