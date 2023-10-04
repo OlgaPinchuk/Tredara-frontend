@@ -15,7 +15,8 @@
   text-transform: uppercase;
 }
 
-.navigation-bar .auth-links a {
+.navigation-bar .auth-links a,
+.navigation-bar .link-button {
   font-weight: 500;
   font-size: 1.8rem;
   transition: all 0.2s ease-out;
@@ -25,7 +26,13 @@
   margin-right: 2rem;
 }
 
-.navigation-bar .auth-links a:hover {
+.navigation-bar .auth-links a:hover,
+.navigation-bar .link-button:hover {
   font-weight: 600;
   text-decoration: underline;
+}
+
+.navigation-bar .link-button {
+  background: none;
+  color: inherit;
 }

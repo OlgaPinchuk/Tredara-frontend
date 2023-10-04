@@ -1,21 +1,64 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import InputField from "../components/InputField";
 import fields from "../data/fields-sign-in.json";
+import { useUser } from "../state/UserContext";
 
 export function SignInPage() {
   const [form, setForm] = useState({});
+
+  // Global state
+  const { setUser } = useUser();
+  const navigate = useNavigate();
 
   const Inputs = fields.map((item, index) => (
     <InputField field={item} key={index} state={[form, setForm]} />
   ));
 
+  async function onSubmit(event) {
+    event.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:8080/api/login/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-access-token": "token-value",
+        },
+        body: JSON.stringify(form),
+      });
+      if (response.ok) {
+        const result = await response.json();
+        onSuccess(result);
+      } else {
+        const errorText = await response.text();
+
+        onFailure(errorText);
+      }
+    } catch (error) {
+      onFailure(error);
+    }
+  }
+
+  function onSuccess(user) {
+    console.log(user);
+
+    alert("Welcome back!");
+    setUser(user);
+    navigate("/");
+  }
+
+  function onFailure(error) {
+    console.error(error);
+    alert(`Can't log in because of ${error}`);
+  }
+
   return (
     <article className="page auth-page sign-in-page">
       <div className="container">
         <h2>Sign In</h2>
-        <form className="auth-form flex-column">
+        <form className="auth-form flex-column" onSubmit={onSubmit}>
           {Inputs}
           <button>Sign In</button>
         </form>
