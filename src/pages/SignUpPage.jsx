@@ -21,7 +21,7 @@ export function SignUpPage() {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8080/api/signup/", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/signup/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,8 +44,6 @@ export function SignUpPage() {
   }
 
   function onSuccess(newUser) {
-    console.log(newUser);
-
     alert("Welcome to Tredara!");
     setUser(newUser);
     navigate("/");

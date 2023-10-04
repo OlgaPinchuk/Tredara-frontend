@@ -2,12 +2,13 @@ import { useState } from "react";
 import PlaceHolderImage from "../assets/placeholder.jpg";
 import DateTimeSelector from "./DateTimeSelector";
 import { useUser } from "../state/UserContext";
+import { PopupHeader } from "./PopupHeader";
 
-export function CreateItem() {
-  const [selectedImage, setSelectedImage] = useState();
-  const [title, setTitle] = useState();
-  const [description, setDescription] = useState();
-  const [startPrice, setStartPrice] = useState();
+export function CreateItem({ setCreateItemVisible }) {
+  const [selectedImage, setSelectedImage] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [startPrice, setStartPrice] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
 
   const { user } = useUser();
@@ -56,6 +57,10 @@ export function CreateItem() {
       alert("Please select an image!");
       return;
     }
+    if (!user) {
+      alert("Please login!");
+      return;
+    }
     const data = {
       title: title,
       description: description,
@@ -63,13 +68,13 @@ export function CreateItem() {
       startDateTime: new Date(),
       endDateTime: selectedDate,
       imageString: selectedImage,
-      userID: user ? user.id : 1, //1 as default id, till the authentication is not integrated
+      userID: user.id,
     };
     proceedToUploadItem(data);
   };
 
   const proceedToUploadItem = async (data) => {
-    const url = `http://localhost:8080/api/v1/item/create`;
+    const url = `${import.meta.env.VITE_API_URL}/item/create`;
 
     fetch(url, {
       method: "POST",
@@ -96,7 +101,10 @@ export function CreateItem() {
     <div className="container">
       <div className="create-item-container">
         <form className="create-item-box" onSubmit={handleAddButtonClick}>
-          <h2>Add Product</h2>
+          <PopupHeader
+            setVisiblility={setCreateItemVisible}
+            title={"Add Product"}
+          />
 
           <label className="input-title">Title</label>
           <input
@@ -148,7 +156,7 @@ export function CreateItem() {
             />
           </label>
 
-          <button className="bottom-button">Add</button>
+          <button className="action-button">Add</button>
         </form>
       </div>
     </div>
