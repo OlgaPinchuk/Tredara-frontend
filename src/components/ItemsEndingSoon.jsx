@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import Post from './Item'
 import '../styles/components/item.css'
 
-function Items() {
-    const [todos, setTodos] = useState([]);
+export default function ItemsEndingSoon() {
+    const [endingItems, setEndingItems] = useState([]);
 
-    const endpoint = "https://dummyjson.com/products";
+    const endpoint = "http://localhost:8080/api/v1/endinngSoonItems";
 
     useEffect(() => {
         fetch(endpoint)
@@ -15,20 +15,19 @@ function Items() {
       }, []);
 
       function onSuccess(result) {
-        setTodos(result.products);
+        setEndingItems(result);
       }
 
       function onFailure(error) {
-        alert("Sorry we could not load the data");
-        console.error(error);
+        alert("Sorry we could not load the data" + error);
       }
 
-    const Items = todos.map((blog) => <Post blog={blog} key={blog.id}/>);
+    const Items = endingItems.map((item) => <Post item={item} key={item.id}/>);
    
   return (
-    <div className='posts'>
-        <div className='blog-icon'>
-            <h3>Ending Soon Items</h3>
+    <div className='items'>
+        <div className='item-icon'>
+            <h3 className='items-header'>Ending Soon Items</h3>
         </div>
         <div className='items-container'>
             {Items}
@@ -36,5 +35,3 @@ function Items() {
     </div>
   );
 }
-
-export default Items

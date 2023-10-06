@@ -2,18 +2,16 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/components/item.css'
 
-function Item ({blog}) {
+export default function Item ({item}) {
   return (
-    <Link to={`/read/${blog.id}`} className='post-link'>
-        <div className='blog'>
-            <img src={blog.thumbnail} className="blog-image"/>
-            <div className='blog-title'>
-                <h2>{blog.title}</h2>
-                <p>{blog.description}</p>
+    <Link to={`/read/${item.userID}`} className='item-link'>
+        <div className='item'>
+            <img src={item.image_url} className="item-image"/>
+            <div className='item-title'>
+                <h2>{item.title}</h2>
+                <p>{item.description}</p>
             </div>
         </div>
     </Link>
   );
 }
-
-export default Item

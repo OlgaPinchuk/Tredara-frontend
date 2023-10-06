@@ -1,14 +1,16 @@
 import { Outlet } from "react-router-dom";
 
 import { NavigationBar, Footer } from "./components";
-import Posts  from "./components/Items";
+import ItemsEndingSoon  from "./components/ItemsEndingSoon";
+import LatestItems from "./components/LatestItems";
 
 export default function App() {
   return (
     <section className="App">
       <NavigationBar />
       <Outlet />
-      <Posts/>
+      <LatestItems/>
+      <ItemsEndingSoon/>
       <Footer />
     </section>
   );
