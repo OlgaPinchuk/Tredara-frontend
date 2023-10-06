@@ -12,6 +12,8 @@
 @import url("./components/create-item-container.css");
 @import url("./components/input-field.css");
 @import url("./components/item.css");
+@import url("./components/input-field.css");
+@import url("./components/popup-header.css");
 
 /* Pages */
 @import url("./pages/auth-page.css");

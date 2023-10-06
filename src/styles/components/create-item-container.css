@@ -59,7 +59,7 @@
   display: none;
 }
 
-.bottom-button {
+.action-button {
   width: 100%;
   background-color: var(--color-dark);
   color: var(--color-white);
@@ -69,4 +69,8 @@
   font-weight: 500;
   padding: var(--space-small);
   margin-top: var(--space-medium);
+}
+
+.medium-button {
+  width: 10rem;
 }
