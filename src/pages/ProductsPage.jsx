@@ -1,11 +1,12 @@
-import { useState } from "react";
 import { CreateItem } from "../components/CreateItem";
 import { useUser } from "../state/UserContext";
+import { useModal } from "../state/ModalContext";
+import { AddBid } from "../components/AddBid";
+import { ShowBids } from "../components/ShowBids";
 
 export function ProductsPage() {
   const { user } = useUser();
-
-  const [createItemVisible, setCreateItemVisible] = useState(false);
+  const { setModal } = useModal();
 
   return (
     <article className="page products-page">
@@ -14,13 +15,16 @@ export function ProductsPage() {
         {user && (
           <button
             className="action-button medium-button"
-            onClick={() => setCreateItemVisible(true)}
+            onClick={() =>
+              setModal(
+                // <CreateItem />
+                // <AddBid itemId={7} />
+                <ShowBids itemId={7} />
+              )
+            }
           >
             Add Product
           </button>
-        )}
-        {user && createItemVisible && (
-          <CreateItem setCreateItemVisible={setCreateItemVisible} />
         )}
       </div>
     </article>

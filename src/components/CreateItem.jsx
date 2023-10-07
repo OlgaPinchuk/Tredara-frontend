@@ -4,7 +4,7 @@ import DateTimeSelector from "./DateTimeSelector";
 import { useUser } from "../state/UserContext";
 import { PopupHeader } from "./PopupHeader";
 
-export function CreateItem({ setCreateItemVisible }) {
+export function CreateItem() {
   const [selectedImage, setSelectedImage] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -99,12 +99,9 @@ export function CreateItem({ setCreateItemVisible }) {
 
   return (
     <div className="container">
-      <div className="create-item-container">
+      <div className="modal-container">
         <form className="create-item-box" onSubmit={handleAddButtonClick}>
-          <PopupHeader
-            setVisiblility={setCreateItemVisible}
-            title={"Add Product"}
-          />
+          <PopupHeader title={"Add Product"} />
 
           <label className="input-title">Title</label>
           <input

@@ -1,0 +1,19 @@
+.bid-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  border-bottom: 1px var(--color-gray-300) solid;
+  padding: var(--space-small);
+}
+
+.bid-row .bidder-name {
+  text-align: left;
+}
+
+.bid-row .bid-amount {
+  text-align: left;
+}
+
+.bid-row .bid-date-time {
+  text-align: right;
+}
