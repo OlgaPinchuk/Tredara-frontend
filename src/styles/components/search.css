@@ -1,0 +1,11 @@
+.search-form {
+  position: relative;
+}
+
+.search-form .input {
+  display: initial;
+}
+
+.search-form label span {
+  display: none;
+}
