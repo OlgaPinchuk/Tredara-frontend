@@ -66,7 +66,7 @@ export function ProductDetailsPage() {
             Ends in: {timeRemaining.days} days, {timeRemaining.hours} hours,{" "}
             {timeRemaining.minutes} minutes
           </p>
-          <button id="b">Place Bid</button>
+          <button className="button">Place Bid</button>
         </div>
       </div>
     );
