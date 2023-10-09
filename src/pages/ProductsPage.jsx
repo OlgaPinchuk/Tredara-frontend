@@ -18,6 +18,7 @@ export function ProductsPage() {
 
   // Local state
   const [searchItems, setSearchItems] = useState([]);
+  const [queryValid, setQueryValid] = useState(true);
 
   // Constants
   const baseUrl = `${import.meta.env.VITE_API_URL}`;
@@ -35,31 +36,33 @@ export function ProductsPage() {
     error: endingSoonItemsError,
   } = useFetch(itemsEndingSoonEndpoint);
 
-  function onSearch(items) {
+  function onSearch(items, isValidQuery) {
     setSearchItems(items);
+    setQueryValid(isValidQuery);
   }
 
-  const displayItems =
-    searchItems.length > 0 ? (
-      <ProductList items={searchItems} title="Search Results" />
-    ) : (
-      <>
-        {latestItemsLoading ? (
-          <p>Loading Latest Items...</p>
-        ) : latestItemsError ? (
-          <p>Error loading Latest Items: {latestItemsError.message}</p>
-        ) : (
-          <ProductList items={latestItems} title="Latest Items" />
-        )}
-        {endingSoonItemsLoading ? (
-          <p>Loading Ending Soon Items...</p>
-        ) : endingSoonItemsError ? (
-          <p>Error loading Ending Soon Items: {endingSoonItemsError.message}</p>
-        ) : (
-          <ProductList items={endingSoonItems} title="Ending Soon Items" />
-        )}
-      </>
-    );
+  const displayItems = !queryValid ? (
+    <p>No items found.</p>
+  ) : searchItems.length > 0 ? (
+    <ProductList items={searchItems} title="Search Results" />
+  ) : (
+    <>
+      {latestItemsLoading ? (
+        <p>Loading Latest Items...</p>
+      ) : latestItemsError ? (
+        <p>Error loading Latest Items: {latestItemsError.message}</p>
+      ) : (
+        <ProductList items={latestItems} title="Latest Items" />
+      )}
+      {endingSoonItemsLoading ? (
+        <p>Loading Ending Soon Items...</p>
+      ) : endingSoonItemsError ? (
+        <p>Error loading Ending Soon Items: {endingSoonItemsError.message}</p>
+      ) : (
+        <ProductList items={endingSoonItems} title="Ending Soon Items" />
+      )}
+    </>
+  );
 
   return (
     <article className="page products-page">

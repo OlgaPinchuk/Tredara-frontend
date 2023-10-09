@@ -29,7 +29,9 @@ export default function Search({ onSearch }) {
       }
 
       const data = await response.json();
-      onSearch(data);
+      const queryIsValid = data.length > 0;
+
+      onSearch(data, queryIsValid);
     } catch (error) {
       console.error("Error searching for items:", error);
     }
@@ -40,7 +42,7 @@ export default function Search({ onSearch }) {
     setQuery(inputValue);
 
     if (inputValue.trim() === "") {
-      onSearch([]);
+      onSearch([], true);
     }
   }
 
