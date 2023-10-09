@@ -34,11 +34,6 @@ export function ProductsPage() {
   return (
     <article className="page products-page">
       <Hero>
-        <Search onSearch={onSearch} />
-      </Hero>
-      <div className="container">
-        {LatestItems}
-        {EndingSoonItems}
         {user && (
           <div>
             <button
@@ -47,20 +42,13 @@ export function ProductsPage() {
             >
               Add Product
             </button>
-            <button
-              className="action-button medium-button"
-              onClick={() => setModal(<AddBid itemId={7} />)}
-            >
-              Add Bid
-            </button>
-            <button
-              className="action-button medium-button"
-              onClick={() => setModal(<ShowBids itemId={7} />)}
-            >
-              Show Bids
-            </button>
           </div>
         )}
+        <Search onSearch={onSearch} />
+      </Hero>
+      <div className="container">
+        {LatestItems}
+        {EndingSoonItems}
       </div>
     </article>
   );

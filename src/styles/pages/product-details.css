@@ -42,3 +42,9 @@ p {
     text-align: right; /* Right-align image for larger screens */
   }
 }
+
+.underlined-text {
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 500;
+}
