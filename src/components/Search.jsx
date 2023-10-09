@@ -22,7 +22,7 @@ export default function Search({ onSearch }) {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/items/search?title=${query.search}`
+        `${import.meta.env.VITE_API_URL}/items/search?query=${query.search}`
       );
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
