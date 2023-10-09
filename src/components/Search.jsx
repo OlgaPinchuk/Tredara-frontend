@@ -35,9 +35,22 @@ export default function Search({ onSearch }) {
     }
   }
 
+  function handleInput(event) {
+    const inputValue = event.target.value;
+    setQuery(inputValue);
+
+    if (inputValue.trim() === "") {
+      onSearch([]);
+    }
+  }
+
   return (
     <form className="search-form" onSubmit={onSubmit}>
-      <InputField field={searchFiled} state={[query, setQuery]} />
+      <InputField
+        field={searchFiled}
+        state={[query, setQuery]}
+        onInput={handleInput}
+      />
     </form>
   );
 }

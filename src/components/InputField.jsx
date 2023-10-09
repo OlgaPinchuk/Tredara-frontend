@@ -1,4 +1,4 @@
-export function InputField({ field, state }) {
+export function InputField({ field, state, onInput }) {
   const { key, autoFocus, label, placeholder, type, required } = field;
   const [value, setValue] = state;
 
@@ -29,6 +29,7 @@ export function InputField({ field, state }) {
         required={required}
         type={type}
         value={initialValue}
+        onInput={onInput}
       />
     </label>
   );

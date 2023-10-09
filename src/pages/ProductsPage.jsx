@@ -5,6 +5,7 @@ import { useUser } from "../state/UserContext";
 import ProductList from "../components/ProductList";
 import Hero from "../components/Hero";
 import Search from "../components/Search";
+import useFetch from "../hooks/useFetch";
 
 export function ProductsPage() {
   // Global state
@@ -12,24 +13,49 @@ export function ProductsPage() {
 
   // Local state
   const [createItemVisible, setCreateItemVisible] = useState(false);
+  const [searchItems, setSearchItems] = useState([]);
 
   // Constants
   const baseUrl = `${import.meta.env.VITE_API_URL}`;
   const latestItemsEndpoint = `${baseUrl}/latestItems`;
   const itemsEndingSoonEndpoint = `${baseUrl}/endingSoonItems`;
 
-  const LatestItems = (
-    <ProductList endpoint={latestItemsEndpoint} title="Latest Items" />
-  );
-
-  const EndingSoonItems = (
-    <ProductList endpoint={itemsEndingSoonEndpoint} title="Ending Soon Items" />
-  );
-  // Methods
+  const {
+    data: latestItems,
+    loading: latestItemsLoading,
+    error: latestItemsError,
+  } = useFetch(latestItemsEndpoint);
+  const {
+    data: endingSoonItems,
+    loading: endingSoonItemsLoading,
+    error: endingSoonItemsError,
+  } = useFetch(itemsEndingSoonEndpoint);
 
   function onSearch(items) {
-    return []; // TODO: implement with state
+    setSearchItems(items);
   }
+
+  const displayItems =
+    searchItems.length > 0 ? (
+      <ProductList items={searchItems} title="Search Results" />
+    ) : (
+      <>
+        {latestItemsLoading ? (
+          <p>Loading Latest Items...</p>
+        ) : latestItemsError ? (
+          <p>Error loading Latest Items: {latestItemsError.message}</p>
+        ) : (
+          <ProductList items={latestItems} title="Latest Items" />
+        )}
+        {endingSoonItemsLoading ? (
+          <p>Loading Ending Soon Items...</p>
+        ) : endingSoonItemsError ? (
+          <p>Error loading Ending Soon Items: {endingSoonItemsError.message}</p>
+        ) : (
+          <ProductList items={endingSoonItems} title="Ending Soon Items" />
+        )}
+      </>
+    );
 
   return (
     <article className="page products-page">
@@ -37,8 +63,7 @@ export function ProductsPage() {
         <Search onSearch={onSearch} />
       </Hero>
       <div className="container">
-        {LatestItems}
-        {EndingSoonItems}
+        {displayItems}
         {user && (
           <button
             className="action-button medium-button"
