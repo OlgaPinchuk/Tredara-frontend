@@ -53,6 +53,7 @@ export default function Search({ onSearch }) {
         state={[query, setQuery]}
         onInput={handleInput}
       />
+      <button className="search-button">Search</button>
     </form>
   );
 }

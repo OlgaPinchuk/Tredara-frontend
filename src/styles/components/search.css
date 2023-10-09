@@ -10,8 +10,18 @@
   display: none;
 }
 
-.search-form .input-field input {
-  min-width: 36rem;
+.search-form .input-field input,
+.search-form .search-button {
   height: 5.4rem;
   font-size: 1.8rem;
+}
+
+.search-form .input-field input {
+  min-width: 36rem;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.search-form .search-button {
+  background-color: var(--color-dark-green);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
