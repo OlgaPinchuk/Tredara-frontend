@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 
 import { NavigationBar, Footer } from "./components";
-import ItemsEndingSoon  from "./components/ItemsEndingSoon";
+import ItemsEndingSoon from "./components/ItemsEndingSoon";
 import LatestItems from "./components/LatestItems";
 
 export default function App() {
@@ -9,8 +9,8 @@ export default function App() {
     <section className="App">
       <NavigationBar />
       <Outlet />
-      <LatestItems/>
-      <ItemsEndingSoon/>
+      <LatestItems />
+      <ItemsEndingSoon />
       <Footer />
     </section>
   );
