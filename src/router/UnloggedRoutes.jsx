@@ -15,6 +15,10 @@ const UnloggedRoutes = [
     element: <SignUpPage />,
   },
   {
+    index: true,
+    element: <ProductsPage />,
+  },
+  {
     path: "/product/:productId",
     element: <ProductDetailsPage />,
   },

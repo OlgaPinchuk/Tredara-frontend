@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import InputField from "./InputField";
+import { InputField } from "./InputField";
 
 export default function Search({ onSearch }) {
   // State

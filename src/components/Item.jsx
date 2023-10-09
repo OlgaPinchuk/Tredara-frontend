@@ -1,15 +1,15 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/components/item.css";
 
-export default function Item({ item }) {
+export function Item({ item }) {
+  const { id, image_url, title, description } = item;
+
   return (
-    <Link to={`/product/${item.id}`} className="item-link">
+    <Link to={`/product/${id}`} className="item-link">
       <div className="item">
-        <img src={item.image_url} className="item-image" />
+        <img src={image_url} className="item-image" />
         <div className="item-title">
-          <h2>{item.title}</h2>
-          <p>{item.description}</p>
+          <h3>{title}</h3>
+          <p>{description}</p>
         </div>
       </div>
     </Link>
