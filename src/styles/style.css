@@ -20,6 +20,9 @@
 @import url("./components/bid-row.css");
 @import url("./components/modal.css");
 @import url("./components/add-bid.css");
+@import url("./components/product-list.css");
+@import url("./components/hero.css");
+@import url("./components/search.css");
 
 /* Pages */
 @import url("./pages/auth-page.css");

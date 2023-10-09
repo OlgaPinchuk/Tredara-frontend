@@ -6,7 +6,7 @@ const CustomerRoutes = [
     element: <ProductsPage />,
   },
   {
-    path: ":productId",
+    path: "/product/:productId",
     element: <ProductDetailsPage />,
   },
 ];

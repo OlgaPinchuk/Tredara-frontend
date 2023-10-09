@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import InputField from "../components/InputField";
+import { InputField } from "../components";
 import fields from "../data/fields-sign-up.json";
 import { useUser } from "../state/UserContext";
 
