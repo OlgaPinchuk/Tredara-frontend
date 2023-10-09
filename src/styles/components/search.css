@@ -1,0 +1,17 @@
+.search-form {
+  position: relative;
+}
+
+.search-form .input {
+  display: initial;
+}
+
+.search-form label span {
+  display: none;
+}
+
+.search-form .input-field input {
+  min-width: 36rem;
+  height: 5.4rem;
+  font-size: 1.8rem;
+}
