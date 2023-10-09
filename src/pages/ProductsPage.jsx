@@ -13,18 +13,26 @@ export function ProductsPage() {
       <div className="container">
         <h2>Products page</h2>
         {user && (
-          <button
-            className="action-button medium-button"
-            onClick={() =>
-              setModal(
-                // <CreateItem />
-                // <AddBid itemId={7} />
-                <ShowBids itemId={7} />
-              )
-            }
-          >
-            Add Product
-          </button>
+          <div>
+            <button
+              className="action-button medium-button"
+              onClick={() => setModal(<CreateItem />)}
+            >
+              Add Product
+            </button>
+            <button
+              className="action-button medium-button"
+              onClick={() => setModal(<AddBid itemId={7} />)}
+            >
+              Add Bid
+            </button>
+            <button
+              className="action-button medium-button"
+              onClick={() => setModal(<ShowBids itemId={7} />)}
+            >
+              Show Bids
+            </button>
+          </div>
         )}
       </div>
     </article>

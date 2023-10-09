@@ -23,6 +23,7 @@ export function SignUpPage() {
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/signup/`, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
           "x-access-token": "token-value",

@@ -20,7 +20,6 @@ export function AddBid({ itemId }) {
     const data = {
       amount: amount,
       itemId: itemId,
-      userId: user.id,
     };
     proceedToAddBid(data);
   };

@@ -67,7 +67,7 @@ export function CreateItem() {
       startPrice: startPrice,
       startDateTime: new Date(),
       endDateTime: selectedDate,
-      imageString: selectedImage,
+      image_url: selectedImage,
       userID: user.id,
     };
     proceedToUploadItem(data);
