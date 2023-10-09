@@ -1,24 +1,16 @@
-/* Reset default margins and paddings */
-body,
-h1,
-p {
-  margin: 0;
-  padding: 0;
-}
-
 /* Mobile styles */
-.product-detail {
+.product-details {
   display: grid;
-  grid-template-columns: 1fr; /* Single column layout for mobile */
-  gap: var(--space-medium); /* Gap between elements */
+  grid-template-columns: 1fr;
+  gap: var(--space-medium);
   padding: var(--space-small);
 }
 
-.product-image {
-  text-align: center; /* Center the image horizontally */
+.product-details .product-image {
+  text-align: center;
 }
 
-.product-image img {
+.product-details .product-image img {
   border: var(--border-radius);
   max-width: 100%;
   height: auto;
@@ -26,19 +18,24 @@ p {
   object-fit: cover;
 }
 
-.product-info {
-  padding: 20px;
-  text-align: left; /* Align content to the left */
+.product-details .product-info {
+  padding: 2rem;
+  text-align: left;
   justify-content: center;
+  word-break: break-word;
 }
 
 /* Desktop and Tablet styles */
 @media (min-width: 550px) {
-  .product-detail {
-    grid-template-columns: 1fr 1fr; /* Two-column layout for larger screens */
+  .product-details {
+    grid-template-columns: 1fr 1fr;
   }
 
-  .product-image {
-    text-align: right; /* Right-align image for larger screens */
+  .product-details .product-image {
+    text-align: right;
   }
+}
+
+.place-bid-btn {
+  margin-top: 2rem;
 }
