@@ -1,4 +1,9 @@
-import { ProductsPage, SignInPage, SignUpPage } from "../pages";
+import {
+  ProductsPage,
+  ProductDetailsPage,
+  SignInPage,
+  SignUpPage,
+} from "../pages";
 
 const UnloggedRoutes = [
   {
@@ -10,8 +15,8 @@ const UnloggedRoutes = [
     element: <SignUpPage />,
   },
   {
-    index: true,
-    element: <ProductsPage />,
+    path: "/product/:productId",
+    element: <ProductDetailsPage />,
   },
 ];
 
