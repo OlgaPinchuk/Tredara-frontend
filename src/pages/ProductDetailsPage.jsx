@@ -5,7 +5,6 @@ import PlaceHolderImage from "../assets/placeholder.jpg";
 export function ProductDetailsPage() {
   const { productId } = useParams(); // Get the productId from the URL params
   const [item, setItem] = useState(null);
-  const [timeRemaining, setTimeRemaining] = useState(null);
 
   // Function to fetch item details
   const fetchItemDetails = async () => {
@@ -28,44 +27,23 @@ export function ProductDetailsPage() {
     fetchItemDetails();
   }, [productId]); // Add productId to the dependency array
 
-  useEffect(() => {
-    // Calculate time remaining when item data is available
-    if (item) {
-      const endDateTime = new Date(item.endDateTime);
-      const currentTime = new Date();
-      const timeDifference = endDateTime - currentTime;
-
-      const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minutes = Math.floor(
-        (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
-      );
-
-      setTimeRemaining({ days, hours, minutes });
-    }
-  }, [item]);
-
   // Function to render item details
   const renderItemDetails = () => {
-    if (!item || !timeRemaining) {
+    if (!item) {
       return <div>Loading...</div>;
     }
 
     return (
       <div className="product-detail">
         <div className="product-image">
-          <img src={item.image_url || PlaceHolderImage} alt="Product Image" />
+          <img src={item.imageUrl || PlaceHolderImage} alt="Product Image" />
         </div>
         <div className="product-info">
           <h1>{item.title}</h1>
           <p>Description: {item.description}</p>
           <p>Leading Bid (SEK): {item.startPrice}</p>
-          <p>
-            Ends in: {timeRemaining.days} days, {timeRemaining.hours} hours,{" "}
-            {timeRemaining.minutes} minutes
-          </p>
+          <p> Ends in: {item.timeToBidEnd}</p>
+          <p> Bids(Show):{item.numberOfBids} Bids</p>
           <button className="button">Place Bid</button>
         </div>
       </div>
