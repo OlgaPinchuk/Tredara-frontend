@@ -3,7 +3,7 @@ export function InputField({ field, state }) {
   const [value, setValue] = state;
 
   // Properties
-  const initialValue = value[key] ?? "";
+  const initialValue = String(value[key] ?? "");
 
   // Methods
   function onChange(event) {

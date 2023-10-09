@@ -3,6 +3,8 @@ import { useState } from "react";
 import { CreateItem } from "../components/CreateItem";
 import { useUser } from "../state/UserContext";
 import ProductList from "../components/ProductList";
+import Hero from "../components/Hero";
+import Search from "../components/Search";
 
 export function ProductsPage() {
   // Global state
@@ -23,9 +25,17 @@ export function ProductsPage() {
   const EndingSoonItems = (
     <ProductList endpoint={itemsEndingSoonEndpoint} title="Ending Soon Items" />
   );
+  // Methods
+
+  function onSearch(items) {
+    return []; // TODO: implement with state
+  }
 
   return (
     <article className="page products-page">
+      <Hero>
+        <Search onSearch={onSearch} />
+      </Hero>
       <div className="container">
         {LatestItems}
         {EndingSoonItems}
