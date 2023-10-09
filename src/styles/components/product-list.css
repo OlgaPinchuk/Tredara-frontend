@@ -1,0 +1,16 @@
+.grid-cards {
+  display: grid;
+  grid-auto-columns: auto;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 2rem;
+}
+
+.list-header {
+  margin: 3rem 0;
+  font-size: 3rem;
+}
+
+.list-header i {
+  font-size: 0.7em;
+  color: var(--color-red);
+}

@@ -1,3 +1,7 @@
 .products-page {
-  color: red;
+  padding: 2rem 1rem;
+}
+
+.products-page .list-header {
+  color: var(--color-dark-green);
 }

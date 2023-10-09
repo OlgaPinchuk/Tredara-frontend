@@ -1,4 +1,4 @@
-export default function InputField({ field, state }) {
+export function InputField({ field, state }) {
   const { key, autoFocus, label, placeholder, type, required } = field;
   const [value, setValue] = state;
 

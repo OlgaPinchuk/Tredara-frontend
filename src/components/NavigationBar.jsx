@@ -7,6 +7,7 @@ export function NavigationBar() {
   const { user, setUser } = useUser();
   const navigate = useNavigate();
 
+  // Methods
   async function handleLogout() {
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/logout/`, {
