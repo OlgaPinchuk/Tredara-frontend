@@ -19,6 +19,7 @@ export function NavigationBar() {
       });
 
       if (response.ok) {
+        clearCookie("Tredara");
         setUser(null);
         alert("You logged out successfully!");
         navigate("/");
@@ -28,6 +29,10 @@ export function NavigationBar() {
     } catch (error) {
       console.error("Error while logging out:", error);
     }
+  }
+
+  function clearCookie(cookieName) {
+    document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   }
 
   return (

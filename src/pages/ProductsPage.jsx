@@ -2,6 +2,10 @@ import { useState } from "react";
 
 import { CreateItem } from "../components/CreateItem";
 import { useUser } from "../state/UserContext";
+import { useModal } from "../state/ModalContext";
+import { AddBid } from "../components/AddBid";
+import { ShowBids } from "../components/ShowBids";
+
 import ProductList from "../components/ProductList";
 import Hero from "../components/Hero";
 import Search from "../components/Search";
@@ -10,9 +14,9 @@ import useFetch from "../hooks/useFetch";
 export function ProductsPage() {
   // Global state
   const { user } = useUser();
+  const { setModal } = useModal();
 
   // Local state
-  const [createItemVisible, setCreateItemVisible] = useState(false);
   const [searchItems, setSearchItems] = useState([]);
 
   // Constants
@@ -60,22 +64,19 @@ export function ProductsPage() {
   return (
     <article className="page products-page">
       <Hero>
+        {user && (
+          <div>
+            <button
+              className="action-button medium-button"
+              onClick={() => setModal(<CreateItem />)}
+            >
+              Add Product
+            </button>
+          </div>
+        )}
         <Search onSearch={onSearch} />
       </Hero>
-      <div className="container">
-        {displayItems}
-        {user && (
-          <button
-            className="action-button medium-button"
-            onClick={() => setCreateItemVisible(true)}
-          >
-            Add Product
-          </button>
-        )}
-        {user && createItemVisible && (
-          <CreateItem setCreateItemVisible={setCreateItemVisible} />
-        )}
-      </div>
+      <div className="container">{displayItems}</div>
     </article>
   );
 }

@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 
 import { NavigationBar, Footer } from "./components";
+import Modal from "./components/Modal";
 
 export default function App() {
   return (
@@ -8,6 +9,7 @@ export default function App() {
       <NavigationBar />
       <Outlet />
       <Footer />
+      <Modal />
     </section>
   );
 }

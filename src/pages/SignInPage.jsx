@@ -22,12 +22,14 @@ export function SignInPage() {
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/login/`, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
           "x-access-token": "token-value",
         },
         body: JSON.stringify(form),
       });
+
       if (response.ok) {
         const result = await response.json();
         onSuccess(result);
