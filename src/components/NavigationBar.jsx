@@ -21,6 +21,7 @@ export function NavigationBar() {
       if (response.ok) {
         clearCookie("Tredara");
         setUser(null);
+        localStorage.removeItem("user");
         alert("You logged out successfully!");
         navigate("/");
       } else {
