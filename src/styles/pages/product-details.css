@@ -4,6 +4,7 @@
   grid-template-columns: 1fr;
   gap: var(--space-medium);
   padding: var(--space-small);
+  align-items: center;
 }
 
 .product-details .product-image {
@@ -12,7 +13,7 @@
 
 .product-details .product-image img {
   border: var(--border-radius);
-  max-width: 100%;
+  max-width: 45rem;
   height: auto;
   vertical-align: bottom;
   object-fit: cover;
@@ -40,4 +41,8 @@
   text-decoration: underline;
   cursor: pointer;
   font-weight: 500;
+}
+
+.product-details .place-bid-btn {
+  margin-top: 3rem;
 }

@@ -5,11 +5,13 @@ import PlaceHolderImage from "../assets/placeholder.jpg";
 import { useModal } from "../state/ModalContext";
 import { AddBid } from "../components/AddBid";
 import { ShowBids } from "../components/ShowBids";
+import { useUser } from "../state/UserContext";
 
 export function ProductDetailsPage() {
   const { setModal } = useModal();
+  const { user } = useUser();
 
-  const { productId } = useParams(); // Get the productId from the URL params
+  const { productId } = useParams();
   const [item, setItem] = useState(null);
 
   const fetchItemDetails = async () => {
@@ -36,33 +38,45 @@ export function ProductDetailsPage() {
       return <div>Loading...</div>;
     }
 
+    const { title, imageUrl, description, startPrice, timeToBidEnd } = item;
+
     return (
       <div className="product-details">
         <div className="product-image">
-          <img src={item.imageUrl || PlaceHolderImage} alt="Product Image" />
+          <img src={imageUrl || PlaceHolderImage} alt="Product Image" />
         </div>
         <div className="product-info">
-          <h2>{item.title}</h2>
-          <p>Description: {item.description}</p>
-          <p>Leading bid: {item.startPrice} SEK</p>
-          <p> Ends in: {item.timeToBidEnd}</p>
+          <h2>{title}</h2>
           <p>
-            Bids(
-            <span
-              className="underlined-text"
-              onClick={() => setModal(<ShowBids itemId={productId} />)}
-            >
-              Show
-            </span>
-            ):
+            <b>Leading bid:</b> {startPrice} SEK
+          </p>
+          <p>
+            <b>Ends in:</b> {timeToBidEnd}
+          </p>
+          <p>
+            <b>
+              Bids (
+              <span
+                className="underlined-text"
+                onClick={() => setModal(<ShowBids itemId={productId} />)}
+              >
+                Show
+              </span>
+              ):
+            </b>{" "}
             {item.numberOfBids} Bids
           </p>
-          <button
-            className="button"
-            onClick={() => setModal(<AddBid itemId={productId} />)}
-          >
-            Place Bid
-          </button>
+          <p>
+            <b>Description:</b> {description}
+          </p>
+          {user && (
+            <button
+              className="button place-bid-btn"
+              onClick={() => setModal(<AddBid itemId={productId} />)}
+            >
+              Place Bid
+            </button>
+          )}
         </div>
       </div>
     );

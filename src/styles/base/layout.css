@@ -52,6 +52,13 @@ button,
   font-weight: bold;
 }
 
+.grid-cards {
+  display: grid;
+  grid-auto-columns: auto;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 35rem));
+  gap: 2rem;
+}
+
 @media (min-width: 750px) {
   .container {
     max-width: 960px;

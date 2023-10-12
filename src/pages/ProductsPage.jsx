@@ -67,6 +67,10 @@ export function ProductsPage() {
   return (
     <article className="page products-page">
       <Hero>
+        <Search onSearch={onSearch} />
+      </Hero>
+
+      <div className="container">
         {user && (
           <div>
             <button
@@ -77,9 +81,8 @@ export function ProductsPage() {
             </button>
           </div>
         )}
-        <Search onSearch={onSearch} />
-      </Hero>
-      <div className="container">{displayItems}</div>
+        {displayItems}
+      </div>
     </article>
   );
 }
