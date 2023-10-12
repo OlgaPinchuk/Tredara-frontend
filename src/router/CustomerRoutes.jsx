@@ -1,4 +1,5 @@
 import { ProductDetailsPage, ProductsPage } from "../pages";
+import { HistoryPage } from "../pages/HistoryPage";
 
 const CustomerRoutes = [
   {
@@ -8,6 +9,10 @@ const CustomerRoutes = [
   {
     path: "/product/:productId",
     element: <ProductDetailsPage />,
+  },
+  {
+    path: "/history",
+    element: <HistoryPage />,
   },
 ];
 

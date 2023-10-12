@@ -1,15 +1,14 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-import { CreateItem } from "../components/CreateItem";
 import { useUser } from "../state/UserContext";
 import { useModal } from "../state/ModalContext";
-import { AddBid } from "../components/AddBid";
-import { ShowBids } from "../components/ShowBids";
+import useFetch from "../hooks/useFetch";
 
 import ProductList from "../components/ProductList";
+import { CreateItem } from "../components/CreateItem";
 import Hero from "../components/Hero";
 import Search from "../components/Search";
-import useFetch from "../hooks/useFetch";
 
 export function ProductsPage() {
   // Global state
@@ -75,6 +74,9 @@ export function ProductsPage() {
             >
               Add Product
             </button>
+            <Link to={`/history`} className="item-link">
+              <button className="action-button medium-button">History</button>
+            </Link>
           </div>
         )}
         <Search onSearch={onSearch} />

@@ -18,6 +18,7 @@ export default function useFetch(endpoint) {
       .then((data) => {
         setData(data);
         setLoading(false);
+        setError(false);
       })
       .catch((error) => {
         setError(error);
