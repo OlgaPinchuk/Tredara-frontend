@@ -46,7 +46,11 @@ export function ProductDetailsPage() {
         <div className="product-info">
           <h1>{item.title}</h1>
           <p>Description: {item.description}</p>
-          <p>Leading Bid (SEK): {item.startPrice}</p>
+          <p>Start Price: SEK {item.startPrice}</p>
+          <p>
+            Leading Bid: {item.startPrice == "" ? "" : "SEK "}
+            {item.startPrice}
+          </p>
           <p> Ends in: {item.timeToBidEnd}</p>
           <p>
             {" "}
