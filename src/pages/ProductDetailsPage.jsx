@@ -2,10 +2,14 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import PlaceHolderImage from "../assets/placeholder.jpg";
+import { useModal } from "../state/ModalContext";
+import { AddBid } from "../components/AddBid";
+import { ShowBids } from "../components/ShowBids";
 
 export function ProductDetailsPage() {
-  const { productId } = useParams();
+  const { setModal } = useModal();
 
+  const { productId } = useParams(); // Get the productId from the URL params
   const [item, setItem] = useState(null);
 
   const fetchItemDetails = async () => {
@@ -39,12 +43,26 @@ export function ProductDetailsPage() {
         </div>
         <div className="product-info">
           <h2>{item.title}</h2>
+          <p>Description: {item.description}</p>
           <p>Leading bid: {item.startPrice} SEK</p>
           <p> Ends in: {item.timeToBidEnd}</p>
-          <p> Bids number: {item.numberOfBids}</p>
-          <p>Description: {item.description}</p>
-
-          <button className="button place-bid-btn">Place Bid</button>
+          <p>
+            Bids(
+            <span
+              className="underlined-text"
+              onClick={() => setModal(<ShowBids itemId={productId} />)}
+            >
+              Show
+            </span>
+            ):
+            {item.numberOfBids} Bids
+          </p>
+          <button
+            className="button"
+            onClick={() => setModal(<AddBid itemId={productId} />)}
+          >
+            Place Bid
+          </button>
         </div>
       </div>
     );

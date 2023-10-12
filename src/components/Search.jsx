@@ -29,15 +29,31 @@ export default function Search({ onSearch }) {
       }
 
       const data = await response.json();
-      onSearch(data);
+      const queryIsValid = data.length > 0;
+
+      onSearch(data, queryIsValid);
     } catch (error) {
       console.error("Error searching for items:", error);
     }
   }
 
+  function handleInput(event) {
+    const inputValue = event.target.value;
+    setQuery(inputValue);
+
+    if (inputValue.trim() === "") {
+      onSearch([], true);
+    }
+  }
+
   return (
     <form className="search-form" onSubmit={onSubmit}>
-      <InputField field={searchFiled} state={[query, setQuery]} />
+      <InputField
+        field={searchFiled}
+        state={[query, setQuery]}
+        onInput={handleInput}
+      />
+      <button className="search-button">Search</button>
     </form>
   );
 }

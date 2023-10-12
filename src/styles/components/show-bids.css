@@ -1,0 +1,11 @@
+.bid-history-box {
+  min-width: 320px;
+  width: 50vw;
+  height: 60vh;
+  border: 1px grey solid;
+  border-radius: 4px;
+  padding: var(--space-medium);
+  background-color: var(--color-white);
+  color: var(--color-dark);
+  overflow-y: scroll;
+}

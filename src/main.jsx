@@ -5,11 +5,14 @@ import { RouterProvider } from "react-router-dom";
 import { UserProvider } from "./state/UserContext";
 import "./styles/style.css";
 import router from "./router/router";
+import { ModalProvider } from "./state/ModalContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <UserProvider>
-      <RouterProvider router={router} />
+      <ModalProvider>
+        <RouterProvider router={router} />
+      </ModalProvider>
     </UserProvider>
   </React.StrictMode>
 );

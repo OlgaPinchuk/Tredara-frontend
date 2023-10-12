@@ -36,6 +36,8 @@
   }
 }
 
-.place-bid-btn {
-  margin-top: 2rem;
+.underlined-text {
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 500;
 }
