@@ -1,5 +1,5 @@
 // Node modules
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 // Properties
 const initialValues = {
@@ -7,14 +7,27 @@ const initialValues = {
   setUser: () => {},
 };
 const Context = createContext(initialValues);
+const LOCAL_STORAGE_KEY = "user";
 
 // Methods
 export function UserProvider({ children }) {
   // Local state
   const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    const storedUser = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  function updateUser(newUser) {
+    setUser(newUser);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newUser));
+  }
+
   // Properties
-  const value = { user, setUser };
+  const value = { user, setUser: updateUser };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }
