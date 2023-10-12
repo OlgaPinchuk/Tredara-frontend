@@ -1,14 +1,14 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-import { CreateItem } from "../components/CreateItem";
 import { useUser } from "../state/UserContext";
 import { useModal } from "../state/ModalContext";
+import useFetch from "../hooks/useFetch";
 
 import ProductList from "../components/ProductList";
+import { CreateItem } from "../components/CreateItem";
 import Hero from "../components/Hero";
 import Search from "../components/Search";
-import useFetch from "../hooks/useFetch";
-import { Link } from "react-router-dom";
 
 export function ProductsPage() {
   // Global state
