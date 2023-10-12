@@ -33,6 +33,13 @@ export function ProductDetailsPage() {
     fetchItemDetails();
   }, [productId]);
 
+  function onAddBid() {
+    setItem((prevItem) => ({
+      ...prevItem,
+      numberOfBids: prevItem.numberOfBids + 1,
+    }));
+  }
+
   const renderItemDetails = () => {
     if (!item) {
       return <div>Loading...</div>;
@@ -72,7 +79,9 @@ export function ProductDetailsPage() {
           {user && (
             <button
               className="button place-bid-btn"
-              onClick={() => setModal(<AddBid itemId={productId} />)}
+              onClick={() =>
+                setModal(<AddBid itemId={productId} onAdd={onAddBid} />)
+              }
             >
               Place Bid
             </button>
