@@ -10,16 +10,18 @@ export function NavigationBar() {
   // Methods
   async function handleLogout() {
     try {
+      const jwtToken = localStorage.getItem("tredara-token");
       const response = await fetch(`${import.meta.env.VITE_API_URL}/logout/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "x-access-token": "token-value",
+          Authorization: `Bearer ${jwtToken}`,
         },
       });
 
       if (response.ok) {
-        clearCookie("Tredara");
+        // clearCookie("Tredara");
         setUser(null);
         localStorage.removeItem("user");
         alert("You logged out successfully!");

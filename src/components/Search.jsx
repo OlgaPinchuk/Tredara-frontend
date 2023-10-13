@@ -21,8 +21,14 @@ export default function Search({ onSearch }) {
     event.preventDefault();
 
     try {
+      const jwtToken = localStorage.getItem("tredara-token");
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/items/search?query=${query.search}`
+        `${import.meta.env.VITE_API_URL}/items/search?query=${query.search}`,
+        {
+          headers: {
+            Authorization: `Bearer ${jwtToken}`,
+          },
+        }
       );
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);

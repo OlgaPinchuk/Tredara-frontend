@@ -87,6 +87,7 @@ export function CreateItem({ onItemCreated }) {
   };
 
   const proceedToUploadItem = async (data) => {
+    const jwtToken = localStorage.getItem("tredara-token");
     const url = `${import.meta.env.VITE_API_URL}/item/create`;
 
     fetch(url, {
@@ -95,6 +96,7 @@ export function CreateItem({ onItemCreated }) {
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${jwtToken}`,
       },
     })
       .then((response) => {

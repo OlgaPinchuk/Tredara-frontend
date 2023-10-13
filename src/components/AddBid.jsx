@@ -23,13 +23,14 @@ export function AddBid({ itemId, onAdd }) {
 
   const proceedToAddBid = async (data) => {
     const url = `${import.meta.env.VITE_API_URL}/bid`;
-
+    const jwtToken = localStorage.getItem("tredara-token");
     fetch(url, {
       method: "POST",
       credentials: "include",
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${jwtToken}`,
       },
     })
       .then(async (response) => {

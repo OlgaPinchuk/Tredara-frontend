@@ -12,6 +12,7 @@ export function ShowBids({ itemId }) {
 
   // Methods
   const getBidsForItem = async () => {
+    const jwtToken = localStorage.getItem("tredara-token");
     const url = `${import.meta.env.VITE_API_URL}/bid/${itemId}`;
 
     fetch(url, {
@@ -19,6 +20,7 @@ export function ShowBids({ itemId }) {
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${jwtToken}`,
       },
     })
       .then(async (response) => {

@@ -1,8 +1,11 @@
 # get the base node image
 FROM node:18-alpine
 
+# ARG NODE_ENV=production
+# ENV NODE_ENV $NODE_ENV
+
 # envionment variables
-ENV VITE_API_URL=
+# ENV VITE_API_URL=
 
 # set the working dir for container
 WORKDIR /frontend
@@ -20,4 +23,4 @@ COPY . .
 RUN npm run build
 EXPOSE 5173
 # build the folder
-CMD [ "npm", "run" , "preview" ]
+CMD [ "npm", "run" , "dev" ]

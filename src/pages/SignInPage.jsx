@@ -31,6 +31,10 @@ export function SignInPage() {
       });
 
       if (response.ok) {
+        const jwtToken = response.headers.get("Authorization");
+        localStorage.setItem("tredara-token", jwtToken);
+        console.log("login token : " + jwtToken);
+
         const result = await response.json();
         onSuccess(result);
       } else {
