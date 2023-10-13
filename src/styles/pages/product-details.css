@@ -47,3 +47,9 @@
 .product-details .place-bid-btn {
   margin-top: 3rem;
 }
+
+.product-details .place-bid-btn.inactive {
+  pointer-events: none;
+  opacity: 0.3;
+  cursor: not-allowed;
+}
