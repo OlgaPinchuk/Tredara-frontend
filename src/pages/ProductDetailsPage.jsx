@@ -41,68 +41,58 @@ export function ProductDetailsPage() {
     }));
   }
 
-  const renderItemDetails = () => {
-    if (!item) {
-      return <div>Loading...</div>;
-    }
+  if (!item) {
+    return <div>Loading...</div>;
+  }
 
-    const {
-      title,
-      imageUrl,
-      description,
-      startPrice,
-      timeToBidEnd,
-      leadPrice,
-    } = item;
+  const { title, imageUrl, description, startPrice, timeToBidEnd, leadPrice } =
+    item;
 
-    return (
-      <div className="product-details">
-        <div className="product-image">
-          <img src={imageUrl || PlaceHolderImage} alt="Product Image" />
-        </div>
-        <div className="product-info">
-          <h2>{title}</h2>
-          <p>
-            <b>Start Price:</b> SEK {startPrice}
-          </p>
-          <p>
-            <b>Leading Bid:</b>{" "}
-            {typeof parseFloat(leadPrice) !== "number" ? "" : "SEK "}
-            {leadPrice}
-          </p>
-          <p>
-            <b>Ends in:</b> {timeToBidEnd}
-          </p>
-          <p>
-            <b>
-              Bids (
-              <span
-                className="underlined-text"
-                onClick={() => setModal(<ShowBids itemId={productId} />)}
-              >
-                Show
-              </span>
-              ):
-            </b>{" "}
-            {item.numberOfBids} Bids
-          </p>
-          <p>
-            <b>Description:</b> {description}
-          </p>
-          {user && (
-            <button
-              className="button place-bid-btn"
-              onClick={() =>
-                setModal(<AddBid itemId={productId} onAdd={onAddBid} />)
-              }
-            >
-              Place Bid
-            </button>
-          )}
-        </div>
+  return (
+    <div className="product-details">
+      <div className="product-image">
+        <img src={imageUrl || PlaceHolderImage} alt="Product Image" />
       </div>
-    );
-  };
-
-  return renderItemDetails();
+      <div className="product-info">
+        <h2>{title}</h2>
+        <p>
+          <b>Start Price:</b> SEK {startPrice}
+        </p>
+        <p>
+          <b>Leading Bid:</b>{" "}
+          {typeof parseFloat(leadPrice) !== "number" ? "" : "SEK "}
+          {leadPrice}
+        </p>
+        <p>
+          <b>Ends in:</b> {timeToBidEnd}
+        </p>
+        <p>
+          <b>
+            Bids (
+            <span
+              className="underlined-text"
+              onClick={() => setModal(<ShowBids itemId={productId} />)}
+            >
+              Show
+            </span>
+            ):
+          </b>{" "}
+          {item.numberOfBids} Bids
+        </p>
+        <p>
+          <b>Description:</b> {description}
+        </p>
+        {user && (
+          <button
+            className="button place-bid-btn"
+            onClick={() =>
+              setModal(<AddBid itemId={productId} onAdd={onAddBid} />)
+            }
+          >
+            Place Bid
+          </button>
+        )}
+      </div>
+    </div>
+  );
 }
