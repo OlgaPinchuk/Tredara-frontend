@@ -4,7 +4,6 @@
 
 - [About](#about)
 - [Getting Started](#Getting-Started)
-  - [JAR File](#JAR-File)
   - [Docker](#Docker)
   - [AWS](#Hosted-in-AWS)
 - [Project Managment](#implementation-and-design)
@@ -41,8 +40,6 @@ In this program, users are divided into two categories:
 ## Getting Started
 
 To get started with the Tredara project, follow these steps:
-
-### JAR-File
 
 1. **Clone Repositories:**
 
