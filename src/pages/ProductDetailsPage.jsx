@@ -59,8 +59,7 @@ export function ProductDetailsPage() {
           <b>Start Price:</b> SEK {startPrice}
         </p>
         <p>
-          <b>Leading Bid:</b>{" "}
-          {typeof parseFloat(leadPrice) !== "number" ? "" : "SEK "}
+          <b>Leading Bid:</b> {isNaN(parseFloat(leadPrice)) ? "" : "SEK "}
           {leadPrice}
         </p>
         <p>

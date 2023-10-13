@@ -12,7 +12,7 @@ export function HistoryPage() {
   const baseUrl = `${import.meta.env.VITE_API_URL}`;
   const userCreatedItems = `${baseUrl}/items/createdByUser/${user?.id}`;
   const userBiddedItems = `${baseUrl}/items/bidedByUser/${user?.id}`;
-  const userWonBidsItems = `${baseUrl}/items/wonByUser/${user?.id}`;
+  const userWonBidsItems = `${baseUrl}/notifications/wonItemsByUser/${user?.id}`;
 
   // Local state
   const [endPoint, setEndPoint] = useState(userCreatedItems);
