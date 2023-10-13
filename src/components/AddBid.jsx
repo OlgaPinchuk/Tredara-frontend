@@ -3,7 +3,7 @@ import { useUser } from "../state/UserContext";
 import { PopupHeader } from "./PopupHeader";
 import { useModal } from "../state/ModalContext";
 
-export function AddBid({ itemId }) {
+export function AddBid({ itemId, onAdd }) {
   const [amount, setAmount] = useState("");
 
   const { user } = useUser();
@@ -17,10 +17,7 @@ export function AddBid({ itemId }) {
       alert("Please login!");
       return;
     }
-    const data = {
-      amount: amount,
-      itemId: itemId,
-    };
+    const data = { amount, itemId };
     proceedToAddBid(data);
   };
 
@@ -37,7 +34,7 @@ export function AddBid({ itemId }) {
     })
       .then(async (response) => {
         if (response.ok) {
-          response.json().then((resp) => onSuccess(resp));
+          response.json().then((data) => onSuccess(data.amount));
         } else {
           onFailure(await response.text());
         }
@@ -45,7 +42,8 @@ export function AddBid({ itemId }) {
       .catch((error) => onFailure(error));
   };
 
-  const onSuccess = (resp) => {
+  const onSuccess = (amount) => {
+    onAdd(amount);
     alert("Bid Added..");
     setModal(null);
   };

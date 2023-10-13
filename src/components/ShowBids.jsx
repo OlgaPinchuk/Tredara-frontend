@@ -33,7 +33,6 @@ export function ShowBids({ itemId }) {
 
   const onSuccess = (resp) => {
     setBids(resp);
-    console.log("bids : " + JSON.stringify(resp));
   };
 
   const onFailure = (error) => {
@@ -49,7 +48,11 @@ export function ShowBids({ itemId }) {
           <div className="bold-text">
             <BidRow bid={BidHistoryHeader} />
           </div>
-          {bids ? bids.map((bid) => <BidRow bid={bid} />) : <p>loading..</p>}
+          {bids ? (
+            bids.map((bid) => <BidRow key={bid.id} bid={bid} />)
+          ) : (
+            <p>loading..</p>
+          )}
         </div>
       </div>
     </div>
