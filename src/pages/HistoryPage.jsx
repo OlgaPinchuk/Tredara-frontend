@@ -10,9 +10,9 @@ export function HistoryPage() {
 
   // Constants
   const baseUrl = `${import.meta.env.VITE_API_URL}`;
-  const userCreatedItems = `${baseUrl}/items/createdByUser/${user.id}`;
-  const userBiddedItems = `${baseUrl}/items/bidedByUser/${user.id}`;
-  const userWonBidsItems = `${baseUrl}/items/wonByUser/${user.id}`;
+  const userCreatedItems = `${baseUrl}/items/createdByUser/${user?.id}`;
+  const userBiddedItems = `${baseUrl}/items/bidedByUser/${user?.id}`;
+  const userWonBidsItems = `${baseUrl}/items/wonByUser/${user?.id}`;
 
   // Local state
   const [endPoint, setEndPoint] = useState(userCreatedItems);
@@ -34,19 +34,19 @@ export function HistoryPage() {
       <Hero>
         <div className="history-header">
           <a
-            className={endPoint == userCreatedItems && "underlined-text"}
+            className={endPoint == userCreatedItems ? "underlined-text" : ""}
             onClick={() => setEndPoint(userCreatedItems)}
           >
             My Items
           </a>
           <a
-            className={endPoint == userBiddedItems && "underlined-text"}
+            className={endPoint == userBiddedItems ? "underlined-text" : ""}
             onClick={() => setEndPoint(userBiddedItems)}
           >
             My Bids
           </a>
           <a
-            className={endPoint == userWonBidsItems && "underlined-text"}
+            className={endPoint == userWonBidsItems ? "underlined-text" : ""}
             onClick={() => setEndPoint(userWonBidsItems)}
           >
             Won Bids
