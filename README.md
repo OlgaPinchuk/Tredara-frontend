@@ -45,23 +45,16 @@ To get started with the Tredara project, follow these steps:
 - git clone github.com/OlgaPinchuk/Tredara-frontend.git
 
 2. **Install Dependencies:**
-- cd Tredara
-- mvn install
-3. **Run the JAR file:**
-- java -jar ----------------------------------
+cd tredara-frontend
+npm install
+npm run start
+
 ### Docker
 - cd Tredara
 - docker compose ------------------------------
 
 ### Hosted in AWS
 - Link - http://-----------
-
-### DataBase
-- Database(MySQL):
-  - User : root
-  - Password : -----------------------
-  - Database Schema: tredara
-  - Port : 3306
 
 ## Project Management
 
