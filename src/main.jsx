@@ -4,15 +4,17 @@ import { RouterProvider } from "react-router-dom";
 
 import { UserProvider } from "./state/UserContext";
 import "./styles/style.css";
-import router from "./router/router";
 import { ModalProvider } from "./state/ModalContext";
+import { initializeRouter } from "./router/router";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <UserProvider>
-      <ModalProvider>
-        <RouterProvider router={router} />
-      </ModalProvider>
-    </UserProvider>
-  </React.StrictMode>
-);
+initializeRouter().then((router) => {
+  ReactDOM.createRoot(document.getElementById("root")).render(
+    <React.StrictMode>
+      <UserProvider>
+        <ModalProvider>
+          <RouterProvider router={router} />
+        </ModalProvider>
+      </UserProvider>
+    </React.StrictMode>
+  );
+});

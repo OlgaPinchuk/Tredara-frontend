@@ -13,12 +13,14 @@ const LOCAL_STORAGE_KEY = "user";
 export function UserProvider({ children }) {
   // Local state
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const storedUser = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
+    setLoading(false);
   }, []);
 
   function updateUser(newUser) {
@@ -29,7 +31,11 @@ export function UserProvider({ children }) {
   // Properties
   const value = { user, setUser: updateUser };
 
-  return <Context.Provider value={value}>{children}</Context.Provider>;
+  return (
+    <Context.Provider value={value}>
+      {loading ? <p>Loading user data...</p> : children}
+    </Context.Provider>
+  );
 }
 
 export function useUser() {

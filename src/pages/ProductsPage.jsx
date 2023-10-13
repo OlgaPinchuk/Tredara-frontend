@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { useUser } from "../state/UserContext";
@@ -15,10 +15,6 @@ export function ProductsPage() {
   const { user } = useUser();
   const { setModal } = useModal();
 
-  // Local state
-  const [searchItems, setSearchItems] = useState([]);
-  const [queryValid, setQueryValid] = useState(true);
-
   // Constants
   const baseUrl = `${import.meta.env.VITE_API_URL}`;
   const latestItemsEndpoint = `${baseUrl}/latestItems`;
@@ -29,15 +25,29 @@ export function ProductsPage() {
     loading: latestItemsLoading,
     error: latestItemsError,
   } = useFetch(latestItemsEndpoint);
+
   const {
     data: endingSoonItems,
     loading: endingSoonItemsLoading,
     error: endingSoonItemsError,
   } = useFetch(itemsEndingSoonEndpoint);
 
+  // Local state
+  const [items, setItems] = useState([]);
+  const [searchItems, setSearchItems] = useState([]);
+  const [queryValid, setQueryValid] = useState(true);
+
   function onSearch(items, isValidQuery) {
     setSearchItems(items);
     setQueryValid(isValidQuery);
+  }
+
+  useEffect(() => {
+    setItems(latestItems);
+  }, [latestItems, endingSoonItems]);
+
+  function onItemCreated(newItem) {
+    setItems((prevItems) => [newItem, ...prevItems]);
   }
 
   const displayItems = !queryValid ? (
@@ -51,7 +61,7 @@ export function ProductsPage() {
       ) : latestItemsError ? (
         <p>Error loading Latest Items: {latestItemsError.message}</p>
       ) : (
-        <ProductList items={latestItems} title="Latest Items" />
+        <ProductList items={items} title="Latest Items" />
       )}
       {endingSoonItemsLoading ? (
         <p>Loading Ending Soon Items...</p>
@@ -66,11 +76,17 @@ export function ProductsPage() {
   return (
     <article className="page products-page">
       <Hero>
+        <Search onSearch={onSearch} />
+      </Hero>
+
+      <div className="container">
         {user && (
           <div>
             <button
               className="action-button medium-button"
-              onClick={() => setModal(<CreateItem />)}
+              onClick={() =>
+                setModal(<CreateItem onItemCreated={onItemCreated} />)
+              }
             >
               Add Product
             </button>
@@ -79,9 +95,8 @@ export function ProductsPage() {
             </Link>
           </div>
         )}
-        <Search onSearch={onSearch} />
-      </Hero>
-      <div className="container">{displayItems}</div>
+        {displayItems}
+      </div>
     </article>
   );
 }

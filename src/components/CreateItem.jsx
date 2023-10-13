@@ -3,9 +3,10 @@ import { useState } from "react";
 import PlaceHolderImage from "../assets/placeholder.jpg";
 import DateTimeSelector from "./DateTimeSelector";
 import { useUser } from "../state/UserContext";
+import { useModal } from "../state/ModalContext";
 import { PopupHeader } from "./PopupHeader";
 
-export function CreateItem() {
+export function CreateItem({ onItemCreated }) {
   const [selectedImage, setSelectedImage] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -13,6 +14,7 @@ export function CreateItem() {
   const [selectedDate, setSelectedDate] = useState(null);
 
   const { user } = useUser();
+  const { setModal } = useModal();
 
   // Methods
   async function onChange(event) {
@@ -63,15 +65,25 @@ export function CreateItem() {
       return;
     }
     const data = {
-      title: title,
-      description: description,
-      startPrice: startPrice,
+      title,
+      description,
+      startPrice,
       startDateTime: new Date(),
       endDateTime: selectedDate,
       image_url: selectedImage,
       userID: user.id,
     };
     proceedToUploadItem(data);
+  };
+
+  const onSuccess = (data) => {
+    alert("Product Added..");
+    onItemCreated(data);
+    setModal(null);
+  };
+
+  const onFailure = (error) => {
+    console.error(error);
   };
 
   const proceedToUploadItem = async (data) => {
@@ -86,78 +98,86 @@ export function CreateItem() {
       },
     })
       .then((response) => {
-        response.json().then((resp) => onSuccess(resp));
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Network response was not ok");
+        }
       })
+      .then((data) => onSuccess(data))
       .catch((error) => onFailure(error));
   };
 
-  const onSuccess = (resp) => {
-    alert("Product Added..");
-  };
-
-  const onFailure = (error) => {
-    console.error(error);
-  };
-
   return (
-    <div className="container">
-      <div className="modal-container">
-        <form className="create-item-box" onSubmit={handleAddButtonClick}>
-          <PopupHeader title={"Add Product"} />
+    <div className="modal-container">
+      <form className="create-item-box" onSubmit={handleAddButtonClick}>
+        <PopupHeader title={"Add Product"} />
 
-          <label className="input-title">Title</label>
-          <input
-            className="input-box"
-            placeholder="product name.."
-            value={title}
-            type="text"
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
+        <label htmlFor="productName" className="input-title">
+          Title
+        </label>
+        <input
+          className="input-box"
+          id="productName"
+          placeholder="product name.."
+          value={title}
+          type="text"
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
 
-          <label className="input-title">Description</label>
-          <textarea
-            className="input-area"
-            placeholder="product description.."
-            value={description}
-            required
-            onChange={(e) => setDescription(e.target.value)}
-          />
+        <label htmlFor="productDescription" className="input-title">
+          Description
+        </label>
+        <textarea
+          className="input-area"
+          id="productDescription"
+          placeholder="product description.."
+          value={description}
+          required
+          onChange={(e) => setDescription(e.target.value)}
+        />
 
-          <label className="input-title">Start Price (SEK)</label>
-          <input
-            type="number"
-            className="input-box"
-            placeholder="ex. 100"
-            value={startPrice}
-            onChange={(e) => setStartPrice(e.target.value)}
-            required
-          />
+        <label htmlFor="price" className="input-title">
+          Start Price (SEK)
+        </label>
+        <input
+          type="number"
+          id="price"
+          className="input-box"
+          placeholder="ex. 100"
+          value={startPrice}
+          onChange={(e) => setStartPrice(e.target.value)}
+          required
+        />
 
-          <div className="select-time-container">
-            <label className="input-title">Bid End Time</label>
-            <DateTimeSelector
-              selectedDate={selectedDate}
-              setSelectedDate={setSelectedDate}
-            />
-          </div>
-
-          <label className="input input-image">
-            <span>Image</span>
-            <input
-              type="file"
-              accept="image/png, image/jpeg"
-              onChange={(event) => onChange(event)}
-            />
-            <img
-              src={selectedImage || PlaceHolderImage}
-              onError={(event) => (event.currentTarget.src = PlaceHolderImage)}
-            />
+        <div className="select-time-container">
+          <label htmlFor="endTime" className="input-title">
+            Bid End Time
           </label>
+          <DateTimeSelector
+            id="endTime"
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+          />
+        </div>
 
-          <button className="action-button">Add</button>
-        </form>
-      </div>
+        <label htmlFor="img" className="input input-image">
+          <span>Image</span>
+          <input
+            type="file"
+            id="img"
+            accept="image/png, image/jpeg"
+            onChange={(event) => onChange(event)}
+          />
+          <img
+            src={selectedImage || PlaceHolderImage}
+            onError={(event) => (event.currentTarget.src = PlaceHolderImage)}
+          />
+        </label>
+
+        <button className="action-button">Add</button>
+      </form>
     </div>
   );
 }
