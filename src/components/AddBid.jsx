@@ -17,10 +17,7 @@ export function AddBid({ itemId, onAdd }) {
       alert("Please login!");
       return;
     }
-    const data = {
-      amount: amount,
-      itemId: itemId,
-    };
+    const data = { amount, itemId };
     proceedToAddBid(data);
   };
 
@@ -37,7 +34,7 @@ export function AddBid({ itemId, onAdd }) {
     })
       .then(async (response) => {
         if (response.ok) {
-          response.json().then(() => onSuccess());
+          response.json().then((data) => onSuccess(data.amount));
         } else {
           onFailure(await response.text());
         }
@@ -45,8 +42,8 @@ export function AddBid({ itemId, onAdd }) {
       .catch((error) => onFailure(error));
   };
 
-  const onSuccess = () => {
-    onAdd();
+  const onSuccess = (amount) => {
+    onAdd(amount);
     alert("Bid Added..");
     setModal(null);
   };

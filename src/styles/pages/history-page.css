@@ -1,0 +1,7 @@
+.history-header a {
+  text-shadow: 2px 2px 2px rgba(255, 255, 255, 1);
+  margin-left: var(--space-big);
+  font-weight: 700;
+  font-size: 2rem;
+  cursor: pointer;
+}

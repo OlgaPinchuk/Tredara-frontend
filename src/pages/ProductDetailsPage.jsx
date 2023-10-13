@@ -33,9 +33,10 @@ export function ProductDetailsPage() {
     fetchItemDetails();
   }, [productId]);
 
-  function onAddBid() {
+  function onAddBid(newPrice) {
     setItem((prevItem) => ({
       ...prevItem,
+      leadPrice: newPrice,
       numberOfBids: prevItem.numberOfBids + 1,
     }));
   }
@@ -45,7 +46,14 @@ export function ProductDetailsPage() {
       return <div>Loading...</div>;
     }
 
-    const { title, imageUrl, description, startPrice, timeToBidEnd } = item;
+    const {
+      title,
+      imageUrl,
+      description,
+      startPrice,
+      timeToBidEnd,
+      leadPrice,
+    } = item;
 
     return (
       <div className="product-details">
@@ -55,7 +63,12 @@ export function ProductDetailsPage() {
         <div className="product-info">
           <h2>{title}</h2>
           <p>
-            <b>Leading bid:</b> {startPrice} SEK
+            <b>Start Price:</b> SEK {startPrice}
+          </p>
+          <p>
+            <b>Leading Bid:</b>{" "}
+            {typeof parseFloat(leadPrice) !== "number" ? "" : "SEK "}
+            {leadPrice}
           </p>
           <p>
             <b>Ends in:</b> {timeToBidEnd}

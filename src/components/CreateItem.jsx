@@ -92,6 +92,7 @@ export function CreateItem({ onItemCreated }) {
     fetch(url, {
       method: "POST",
       body: JSON.stringify(data),
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
