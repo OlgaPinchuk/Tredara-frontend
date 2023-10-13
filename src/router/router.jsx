@@ -10,18 +10,18 @@ async function checkAuthenticationStatus() {
   return !!token;
 }
 
-const isAuthenticated = await checkAuthenticationStatus();
+export async function initializeRouter() {
+  const isAuthenticated = await checkAuthenticationStatus();
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: isAuthenticated ? CustomerRoutes : UnloggedRoutes,
-  },
-  {
-    path: "*",
-    element: <ErrorPage />,
-  },
-]);
-
-export default router;
+  return createBrowserRouter([
+    {
+      path: "/",
+      element: <App />,
+      children: isAuthenticated ? CustomerRoutes : UnloggedRoutes,
+    },
+    {
+      path: "*",
+      element: <ErrorPage />,
+    },
+  ]);
+}
