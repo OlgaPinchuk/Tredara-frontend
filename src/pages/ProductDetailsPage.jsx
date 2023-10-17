@@ -88,7 +88,6 @@ export function ProductDetailsPage() {
         </p>
         {user && (
           <button
-            // className="button place-bid-btn"
             className={`button place-bid-btn ${
               timeToBidEnd === "Bidding has ended" ? "inactive" : ""
             }`}

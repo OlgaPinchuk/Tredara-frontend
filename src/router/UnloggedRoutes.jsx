@@ -23,10 +23,10 @@ const UnloggedRoutes = [
     path: "/product/:productId",
     element: <ProductDetailsPage />,
   },
-  {
-    path: "/history",
-    element: <HistoryPage />,
-  },
+  // {
+  //   path: "/history",
+  //   element: <HistoryPage />,
+  // },
 ];
 
 export default UnloggedRoutes;
