@@ -1,3 +1,11 @@
-h2 {
-  color: red;
+.main-footer {
+  padding: var(--space-medium) 0;
+  background-color: var(--color-dark-green);
+  color: var(--color-branded);
+}
+
+.main-footer .copyright {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 500;
 }

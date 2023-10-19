@@ -1,0 +1,26 @@
+[
+  {
+    "key": "name",
+    "autoFocus": true,
+    "label": "Full name",
+    "placeholder": "Your name",
+    "required": true,
+    "type": "text"
+  },
+  {
+    "key": "email",
+    "autoFocus": true,
+    "label": "Email",
+    "placeholder": "your.email@gmail.com",
+    "required": true,
+    "type": "email"
+  },
+  {
+    "key": "password",
+    "autoFocus": true,
+    "label": "Password",
+    "placeholder": "Minimum 8 characters",
+    "required": true,
+    "type": "password"
+  }
+]

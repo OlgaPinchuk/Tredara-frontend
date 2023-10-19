@@ -1,0 +1,9 @@
+.list-header {
+  margin: 3rem 0;
+  font-size: 3rem;
+}
+
+.list-header i {
+  font-size: 0.7em;
+  color: var(--color-red);
+}

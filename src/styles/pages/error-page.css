@@ -1,0 +1,24 @@
+.error-page {
+  min-height: 100vh;
+  background: url("../../assets/images/not-found.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  display: grid;
+  place-items: center;
+}
+
+.error-page .container {
+  gap: 1.8rem;
+}
+
+.error-page h1 {
+  font-size: 3rem;
+  color: var(--color-branded);
+}
+
+.error-page .button {
+  text-align: center;
+  line-height: 4.4rem;
+  background-color: var(--color-dark-green);
+}

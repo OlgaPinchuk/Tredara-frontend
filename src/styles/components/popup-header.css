@@ -1,0 +1,16 @@
+.form-header {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal .close-button {
+  min-width: 3rem;
+  height: 3rem;
+  background: none;
+  color: var(--color-dark);
+  text-align: center;
+  border: 1px var(--color-dark) solid;
+}

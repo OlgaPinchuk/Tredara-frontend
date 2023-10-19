@@ -1,3 +1,15 @@
+import { Outlet } from "react-router-dom";
+
+import { NavigationBar, Footer } from "./components";
+import Modal from "./components/Modal";
+
 export default function App() {
-  return <h1>Tredara</h1>;
+  return (
+    <section className="App">
+      <NavigationBar />
+      <Outlet />
+      <Footer />
+      <Modal />
+    </section>
+  );
 }

@@ -1,0 +1,34 @@
+[
+  {
+    "key": "title",
+    "autoFocus": true,
+    "label": "Title",
+    "placeholder": "product name..",
+    "required": true,
+    "type": "text"
+  },
+  {
+    "key": "description",
+    "autoFocus": true,
+    "label": "Description",
+    "placeholder": "product description..",
+    "required": true,
+    "type": "text-area"
+  },
+  {
+    "key": "start_price",
+    "autoFocus": true,
+    "label": "Start Price (SEK)",
+    "placeholder": "ex. 100",
+    "required": true,
+    "type": "number"
+  },
+  {
+    "key": "description",
+    "autoFocus": true,
+    "label": "Image",
+    "placeholder": "product description..",
+    "required": true,
+    "type": "file"
+  }
+]
