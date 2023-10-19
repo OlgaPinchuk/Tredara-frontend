@@ -4,7 +4,6 @@ import {
   SignInPage,
   SignUpPage,
 } from "../pages";
-import { HistoryPage } from "../pages/HistoryPage";
 
 const UnloggedRoutes = [
   {
@@ -23,10 +22,6 @@ const UnloggedRoutes = [
     path: "/product/:productId",
     element: <ProductDetailsPage />,
   },
-  // {
-  //   path: "/history",
-  //   element: <HistoryPage />,
-  // },
 ];
 
 export default UnloggedRoutes;

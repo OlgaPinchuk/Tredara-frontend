@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useUser } from "../state/UserContext";
 
@@ -37,17 +37,17 @@ export function NavigationBar() {
   return (
     <header className="navigation-bar">
       <div className="container flex-between">
-        <Link to="/">
+        <a href="/">
           <h1 className="logo">Tredara</h1>
-        </Link>
+        </a>
         {user ? (
           <button className="link-button" onClick={handleLogout}>
             Log out
           </button>
         ) : (
           <div className="auth-links">
-            <Link to="/login">Sign In</Link>
-            <Link to="/register">Sign Up</Link>
+            <a href="/login">Sign In</a>
+            <a href="/register">Sign Up</a>
           </div>
         )}
       </div>
