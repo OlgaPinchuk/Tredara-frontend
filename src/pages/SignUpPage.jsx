@@ -31,6 +31,9 @@ export function SignUpPage() {
         body: JSON.stringify(form),
       });
       if (response.ok) {
+        const jwtToken = response.headers.get("Authorization");
+        localStorage.setItem("tredara-token", jwtToken);
+
         const result = await response.json();
         onSuccess(result);
       } else {

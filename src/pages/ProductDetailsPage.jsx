@@ -16,9 +16,14 @@ export function ProductDetailsPage() {
 
   const fetchItemDetails = async () => {
     try {
+      const jwtToken = localStorage.getItem("tredara-token");
       const url = `${import.meta.env.VITE_API_URL}/item/${productId}`;
 
-      const response = await fetch(url);
+      const response = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+        },
+      });
       if (!response.ok) {
         throw new Error("Failed to fetch item details");
       }
@@ -83,7 +88,6 @@ export function ProductDetailsPage() {
         </p>
         {user && (
           <button
-            // className="button place-bid-btn"
             className={`button place-bid-btn ${
               timeToBidEnd === "Bidding has ended" ? "inactive" : ""
             }`}

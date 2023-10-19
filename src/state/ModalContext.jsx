@@ -1,5 +1,5 @@
 // Node modules
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 // Properties
 const initialValues = {

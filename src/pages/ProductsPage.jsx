@@ -90,9 +90,12 @@ export function ProductsPage() {
             >
               Add Product
             </button>
-            <Link to={`/history`} className="item-link">
+            {/* <Link to={`/history`} className="item-link">
               <button className="action-button medium-button">History</button>
-            </Link>
+            </Link> */}
+            <a href={`/history`} className="item-link">
+              <button className="action-button medium-button">History</button>
+            </a>
           </div>
         )}
         {displayItems}
